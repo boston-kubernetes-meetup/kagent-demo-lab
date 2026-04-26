@@ -3,12 +3,13 @@ set -euo pipefail
 
 echo "==> Installing Kind..."
 KIND_VERSION="v0.23.0"
-curl -Lo /usr/local/bin/kind \
+sudo curl -Lo /usr/local/bin/kind \
   "https://kind.sigs.k8s.io/dl/${KIND_VERSION}/kind-linux-amd64"
-chmod +x /usr/local/bin/kind
+sudo chmod +x /usr/local/bin/kind
 
 echo "==> Installing kagent CLI..."
-curl -sSL https://raw.githubusercontent.com/kagent-dev/kagent/main/scripts/install.sh | bash
+sudo apk add openssl
+sudo curl https://raw.githubusercontent.com/kagent-dev/kagent/refs/heads/main/scripts/get-kagent | bash 
 
 echo "==> Creating Kind cluster..."
 cat <<EOF | kind create cluster --name lab --config=-

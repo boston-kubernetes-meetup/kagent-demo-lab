@@ -16,7 +16,7 @@
     "ghcr.io/devcontainers/features/go:1": {}
   },
 
-  "onCreateCommand": "bash .devcontainer/setup.sh",
+  "postCreateCommand": "bash .devcontainer/setup.sh",
 
   "forwardPorts": [8080, 3000, 9978],
   "portsAttributes": {
